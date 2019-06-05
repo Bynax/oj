@@ -1,0 +1,18 @@
+# Database Configuration
+spring:
+  datasource:
+    username: sspku
+    password: sspku
+    url: jdbc.
+
+# Message Service Configuration
+jms:
+  broker:
+    url: tcp://localhost:61616
+# Working Directory
+judger:
+  checkpointDir: /tmp/voj-testpoints
+  workDir: /tmp
+mybatis:
+  type-aliases-package: com.bohuanshi.oj.model
+
