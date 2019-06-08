@@ -32,63 +32,6 @@ public class UserGroup implements Serializable {
         this.userGroupName = userGroupName;
     }
 
-    /**
-     * 获取用户组唯一标识符.
-     *
-     * @return 用户组唯一标识符
-     */
-    public int getUserGroupId() {
-        return userGroupId;
-    }
-
-    /**
-     * 设置用户组唯一标识符.
-     *
-     * @param userGroupId - 用户组唯一标识符
-     */
-    public void setUserGroupId(int userGroupId) {
-        this.userGroupId = userGroupId;
-    }
-
-    /**
-     * 获取用户组唯一英文简称.
-     *
-     * @return 用户组唯一英文简称
-     */
-    public String getUserGroupSlug() {
-        return userGroupSlug;
-    }
-
-    /**
-     * 设置用户组唯一英文简称.
-     *
-     * @param userGroupSlug - 用户组唯一英文简称
-     */
-    public void setUserGroupSlug(String userGroupSlug) {
-        this.userGroupSlug = userGroupSlug;
-    }
-
-    /**
-     * 获取用户组名称.
-     *
-     * @return 用户组名称
-     */
-    public String getUserGroupName() {
-        return userGroupName;
-    }
-
-    /**
-     * 设置用户组名称.
-     *
-     * @param userGroupName - 用户组名称
-     */
-    public void setUserGroupName(String userGroupName) {
-        this.userGroupName = userGroupName;
-    }
-
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
         return String.format("UserGroup [ID=%d, Slug=%s, Name=%s]",

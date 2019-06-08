@@ -8,8 +8,12 @@ import org.apache.ibatis.annotations.Select;
 
 public interface ProblemDAO {
     String TABLE_NAME = "problems";
+    String INSERT_FIELD = "problem_is_public, problem_name,total_submission,problem_time_limit,problem_memory_limit,problem_description," +
+            "problem_input_format,problem_output_format,problem_sample_input,problem_sample_output";
+    String SELECTED_FIELD = "problem_id, " + INSERT_FIELD;
 
-    @Select({"SELECT * FROM", TABLE_NAME, "WHERE problem_id = #{problemId}"})
+
+    @Select({"SELECT", SELECTED_FIELD, "FROM", TABLE_NAME, "WHERE problem_id = #{problemId}"})
     @Results({
             @Result(property = "problemId", column = "problem_id"),
             @Result(property = "isPublic", column = "problem_is_public"),

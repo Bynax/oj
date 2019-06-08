@@ -189,12 +189,14 @@ public class Runner {
 	/**
 	 * Load Native Library.
 	 */
-	static {
-		try {
-			NativeLibraryLoader.loadLibrary("JudgerCore");
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			LOGGER.catching(ex);
-		}
-	}
+
+
+//	static {
+//		try {
+//			NativeLibraryLoader.loadLibrary("JudgerCore");
+//		} catch (Exception ex) {
+//			ex.printStackTrace();
+//			LOGGER.catching(ex);
+//		}
+//	}
 }

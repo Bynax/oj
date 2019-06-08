@@ -1,48 +1,62 @@
 package com.bohuanshi.oj.application;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import com.bohuanshi.oj.messenger.MessageReceiver;
+import com.bohuanshi.oj.messenger.MessageSender;
 import com.bohuanshi.oj.service.LanguageService;
+import org.apache.activemq.util.StopWatch;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.bohuanshi.oj.model.Language;
+
+import javax.annotation.PostConstruct;
 
 /**
  * 程序测评模块的加载器.
  */
 @SpringBootApplication
 @MapperScan("com.bohuanshi.oj.dao")
+@ComponentScan("com.bohuanshi.oj")
 public class ApplicationBootstrap {
     /**
      * 应用程序入口.
      */
-    public static void main(String[] args) {
-        LOGGER.info("Starting Verwandlung Online Judge Judger...");
-        ApplicationBootstrap app = new ApplicationBootstrap();
-        app.getApplicationContext();
-        app.setupHeartBeat();
-        app.getSystemEnvironment();
-        app.setUpShutdownHook();
-        LOGGER.info("Verwandlung Online Judge Judger started.");
+
+    @PostConstruct
+    public void init() {
+        StopWatch stopWatch = new StopWatch(true);
+        HashMap<String,String> map = new HashMap<>();
+        for (int i = 0; i < 10000; i++) {
+
+            messageSender.sendMessage("发送消息----zhisheng-----");
+        }
+        stopWatch.stop();
+        System.out.println("发送消息耗时: " + stopWatch.taken());
+
     }
 
-    /**
-     * 加载应用程序配置.
-     */
-    private void getApplicationContext() {
-        applicationContext = new
-                ClassPathXmlApplicationContext("application-context.xml");
+    public static void main(String[] args) {
+        SpringApplication.run(ApplicationBootstrap.class, args);
+        //ApplicationBootstrap app = new ApplicationBootstrap();
+//        app.setupHeartBeat();
+//        app.getSystemEnvironment();
+//        app.setUpShutdownHook();
     }
+
 
     /**
      * 配置与Web模块的心跳连接.
@@ -160,4 +174,10 @@ public class ApplicationBootstrap {
      * 日志记录器.
      */
     private static final Logger LOGGER = LogManager.getLogger(ApplicationBootstrap.class);
+
+    // 注入生产者和消费者
+    @Autowired
+    private MessageReceiver messageReceiver;
+    @Autowired
+    private MessageSender messageSender;
 }

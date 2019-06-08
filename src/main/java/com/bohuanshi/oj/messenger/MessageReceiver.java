@@ -1,4 +1,4 @@
-package com.bohuanshi.oj.messager;
+package com.bohuanshi.oj.messenger;
 
 import javax.jms.JMSException;
 import javax.jms.MapMessage;
@@ -9,14 +9,14 @@ import com.bohuanshi.oj.application.ApplicationDispatcher;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 
 /**
  * 消息接收服务.
  *
  */
-@Component
+@Service("consumer")
 public class MessageReceiver implements MessageListener {
     /* (non-Javadoc)
      * @see javax.jms.MessageListener#onMessage(javax.jms.Message)

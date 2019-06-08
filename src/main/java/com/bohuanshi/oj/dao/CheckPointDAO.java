@@ -13,6 +13,8 @@ import java.util.List;
  */
 public interface CheckPointDAO {
     String TABLE_NAME = "checkpoint";
+    String INSERT_FIELD = "judge_result_slug, judge_result_name";
+    String SELECTED_FIELD = "judge_result_id, " + INSERT_FIELD;
 
     /**
      * 获取某个试题的全部测试点.
@@ -20,7 +22,7 @@ public interface CheckPointDAO {
      * @param problemId - 试题的唯一标识符
      * @return 某个试题的全部测试点
      */
-    @Select({"SELECT * FROM", TABLE_NAME, "WHERE problem_id = #{problemId}"})
+    @Select({"SELECT", SELECTED_FIELD, "FROM", TABLE_NAME, "WHERE problem_id = #{problemId}"})
     @Results({
             @Result(property = "problemId", column = "problem_id"),
             @Result(property = "checkpointId", column = "checkpoint_id"),

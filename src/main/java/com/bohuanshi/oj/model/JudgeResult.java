@@ -1,8 +1,11 @@
 
 package com.bohuanshi.oj.model;
+import com.sun.istack.internal.NotNull;
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
@@ -30,57 +33,7 @@ public class JudgeResult implements Serializable {
 		this.judgeResultName = judgeResultName;
 	}
 	
-	/**
-	 * 获取评测结果的唯一标识符.
-	 * @return 评测结果的唯一标识符
-	 */
-	public int getJudgeResultId() {
-		return judgeResultId;
-	}
 
-	/**
-	 * 设置评测结果的唯一标识符.
-	 * @param judgeResultId - 评测结果的唯一标识符
-	 */
-	public void setJudgeResultId(int judgeResultId) {
-		this.judgeResultId = judgeResultId;
-	}
-
-	/**
-	 * 获取评测结果的唯一英文缩写.
-	 * @return - 评测结果的唯一英文缩写
-	 */
-	public String getJudgeResultSlug() {
-		return judgeResultSlug;
-	}
-
-	/**
-	 * 设置评测结果的唯一英文缩写.
-	 * @param judgeResultSlug - 评测结果的唯一英文缩写
-	 */
-	public void setJudgeResultSlug(String judgeResultSlug) {
-		this.judgeResultSlug = judgeResultSlug;
-	}
-
-	/**
-	 * 获取评测结果的名称.
-	 * @return 评测结果的名称
-	 */
-	public String getJudgeResultName() {
-		return judgeResultName;
-	}
-
-	/**
-	 * 设置评测结果的名称.
-	 * @param judgeResultName - 评测结果的名称
-	 */
-	public void setJudgeResultName(String judgeResultName) {
-		this.judgeResultName = judgeResultName;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return String.format("JudgeResult [Id=%d, Slug=%s, Name=%s]",
@@ -90,16 +43,23 @@ public class JudgeResult implements Serializable {
 	/**
 	 * 评测结果的唯一标识符.
 	 */
+	@Id
+	@NotNull
+	@Column(length = 4)
 	private int judgeResultId;
 	
 	/**
 	 * 评测结果的英文唯一缩写.
 	 */
+	@Column(length = 4,unique = true)
+	@NotNull
 	private String judgeResultSlug;
 	
 	/**
 	 * 评测结果的名称.
 	 */
+	@Column(length = 32)
+	@NotNull
 	private String judgeResultName;
 	
 	/**

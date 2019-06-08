@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.bohuanshi.oj.messager.MessageSender;
+import com.bohuanshi.oj.messenger.MessageSender;
 
 
 /**

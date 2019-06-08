@@ -6,7 +6,7 @@ import com.bohuanshi.oj.model.UserGroup;
 import org.apache.ibatis.annotations.*;
 
 public interface UserDAO {
-    String TABLE_NAME = "user";
+    String TABLE_NAME = "users";
 
     /**
      * 通过用户名获取用户对象.

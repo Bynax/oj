@@ -11,12 +11,16 @@ import java.util.List;
  */
 
 public interface JudgeResultDAO {
-    String TABLE_NAME="judge_result";
+    String TABLE_NAME = "judge_results";
+    String INSERT_FIELD = "judge_result_slug, judge_result_name";
+    String SELECTED_FIELD = "judge_result_id, " + INSERT_FIELD;
+
     /**
      * 通过评测结果的唯一标识符获取评测结果对象.
+     *
      * @return 预期的评测结果对象或空引用
      */
-    @Select({"SELECT * FROM", TABLE_NAME})
+    @Select({"SELECT", SELECTED_FIELD, "FROM", TABLE_NAME})
     @Results({
             @Result(property = "judgeResultId", column = "judge_result_id"),
             @Result(property = "judgeResultSlug", column = "judge_result_slug"),
@@ -26,10 +30,11 @@ public interface JudgeResultDAO {
 
     /**
      * 通过评测结果的唯一英文缩写获取评测结果对象.
+     *
      * @param judgeResultSlug - 评测结果的唯一英文缩写
      * @return 预期的评测结果对象或空引用
      */
-    @Select({"SELECT * FROM", TABLE_NAME, "WHERE judge_result_slug = #{judgeResultSlug}"})
+    @Select({"SELECT", SELECTED_FIELD, "FROM", TABLE_NAME, "WHERE judge_result_slug = #{judgeResultSlug}"})
     @Results({
             @Result(property = "judgeResultId", column = "judge_result_id"),
             @Result(property = "judgeResultSlug", column = "judge_result_slug"),

@@ -1,18 +1,65 @@
 # Database Configuration
 spring:
+  # datasource
   datasource:
     username: sspku
     password: sspku
-    url: jdbc.
+    url: jdbc:mysql://localhost:3306/sspkuoj?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    driverClassName: com.mysql.cj.jdbc.Driver
+    initialSize: 5
+    maxActive: 30
+    minIdle: 3
+    maxIdle:  10
+    maxWait: 30000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 25200000
+    removeAbandoned: true
+    removeAbandonedTimeout: 1800
+    type: com.alibaba.druid.pool.DruidDataSource
 
-# Message Service Configuration
-jms:
-  broker:
-    url: tcp://localhost:61616
+  # message queue
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    user: admin
+    password: admin
+    pool:
+      enabled: true
+      max-connections: 3
+    in-memory: false
+# 自定义属性
+activemq:
+  # 队列名称
+  queue-name:
+    # 处理提交程序队列
+    dealQueueName: dealQueue
+    # 落盘队列
+    writeQueueName: writeQueue
+
+
+# Logging configuration
+logging:
+  level:
+    org.springframework: error
+    com.bohuanshi.oj: warn
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+    file: "%d %p %c{1.} [%t] %m%n"
+  file: logs/app.log
+
 # Working Directory
 judger:
   checkpointDir: /tmp/voj-testpoints
   workDir: /tmp
+  username:
+  password:
+  description:
+
 mybatis:
   type-aliases-package: com.bohuanshi.oj.model
+
+# System User with Lower Privileges
+system:
+  username: bohuanshi
+  password: bhsysm0526
+
 

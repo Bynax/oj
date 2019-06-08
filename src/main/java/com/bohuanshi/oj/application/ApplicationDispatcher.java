@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.bohuanshi.oj.core.Dispatcher;
-import com.bohuanshi.oj.messager.MessageSender;
+import com.bohuanshi.oj.messenger.MessageSender;
 import com.bohuanshi.oj.model.JudgeResult;
 import com.bohuanshi.oj.model.Submission;
 import com.bohuanshi.oj.service.JudgeResultService;

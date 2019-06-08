@@ -12,6 +12,9 @@ import java.util.List;
 
 public interface LangageDAO {
     String TABLE_NAME = "languages";
+    String INSERT_FIELD = "language_id,language_slug,language_name,language_compile_command,language_run_command";
+    String SELECTED_FIELD = "language_id, " + INSERT_FIELD;
+
 
     /**
      * 通过编程语言的唯一标识符获取编程语言对象.
@@ -27,7 +30,7 @@ public interface LangageDAO {
             @Result(property = "compileCommand", column = "language_compile_command"),
             @Result(property = "runCommand", column = "language_run_command"),
     })
-    Language getLanguageUsingId(@Param("languageId") int languageId);
+    Language getLanguageById(@Param("languageId") int languageId);
 
     /**
      * 通过编程语言的唯一英文缩写获取编程语言对象.
