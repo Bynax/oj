@@ -15,6 +15,8 @@ mvnw
 mvnw.cmd
 /*/*/test
 
+# logs
+/logs/
 
 ### IntelliJ IDEA ###
 .idea

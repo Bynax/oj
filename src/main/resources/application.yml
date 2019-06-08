@@ -34,6 +34,8 @@ activemq:
     dealQueueName: dealQueue
     # 落盘队列
     writeQueueName: writeQueue
+    # 返回到web端消息的消息队列
+    webQueueName: webQueue
 
 
 # Logging configuration

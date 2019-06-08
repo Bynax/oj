@@ -36,18 +36,18 @@ public class ApplicationBootstrap {
      * 应用程序入口.
      */
 
-    @PostConstruct
-    public void init() {
-        StopWatch stopWatch = new StopWatch(true);
-        HashMap<String,String> map = new HashMap<>();
-        for (int i = 0; i < 10000; i++) {
-
-            messageSender.sendMessage("发送消息----zhisheng-----");
-        }
-        stopWatch.stop();
-        System.out.println("发送消息耗时: " + stopWatch.taken());
-
-    }
+//    @PostConstruct
+//    public void init() {
+//        StopWatch stopWatch = new StopWatch(true);
+//        HashMap<String,String> map = new HashMap<>();
+//        for (int i = 0; i < 10000; i++) {
+//
+//            messageSender.sendMessage("发送消息----zhisheng-----");
+//        }
+//        stopWatch.stop();
+//        System.out.println("发送消息耗时: " + stopWatch.taken());
+//
+//    }
 
     public static void main(String[] args) {
         SpringApplication.run(ApplicationBootstrap.class, args);

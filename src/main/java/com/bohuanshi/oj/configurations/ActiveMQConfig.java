@@ -24,6 +24,10 @@ public class ActiveMQConfig {
     // 此消息队列用来将数据写入到数据库中
     private String writeQueueName;
 
+    //此消息队列用来将结果返回到web端
+    @Value("${activemq.queue-name.webQueueName}")
+    private String webQueueName;
+
 
     @Value("${spring.activemq.user}")
     private String usrName;
@@ -52,6 +56,11 @@ public class ActiveMQConfig {
     @Bean
     public Queue writeQueue() {
         return new ActiveMQQueue(writeQueueName);
+    }
+
+    @Bean
+    public Queue webQueue(){
+        return new ActiveMQQueue(webQueueName);
     }
 
 

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.HashMap;
+
 /**
  * 消息队列测试类
  */
@@ -16,7 +18,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class MQTest {
 
     @Test
-    public void MQTest(){
+    public void MQProducerTest(){
+
+        for(int i=0;i<10;i++){
+            HashMap map = new HashMap();
+            map.put(i+"","hello");
+            messageSender.sendMessage2writeQueue(map);
+        }
 
     }
 
